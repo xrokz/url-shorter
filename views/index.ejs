@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Url Shorter</title>
+    <link rel="stylesheet" href="/style.css?s=<%= new Date(); %>">
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="/script.js?s=<%= new Date(); %>"></script>
+
+</head>
+<body>
+    <div class="_container">
+      <h1 class="header">URL Cutter</h1>
+      <div class="_form-inline">
+        <label class="labels" for="title">Title</label> <br>
+        <input id="title" type="text" placeholder="e.g mypage"><br>
+        
+        <label class="labels" for="url">Url</label> <br>
+        <input id="url" type="url" placeholder="e.g https://google.com"><br>
+        <input type="submit" value="Cut" onclick="return submit()">
+
+
+        <table class="mt-5 table" id="table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Url</th>
+              <th>Actions</th>             
+            </tr>
+          </thead>
+          <tbody>
+            <% for(const row of entries) { %> 
+              <tr>
+                <th><a href="/<%= row.title %>"><%= row.title %></a></th>
+                <th><%= row.url %></th>
+                
+                <th><a onclick="return deleteEntry('<%= row._id %>')" href="#">Delete</a></th></tr>
+            <% } %> 
+          </tbody>
+        </table>
+
+
+      </div>
+    </div>
+</body>
+</html>
+
